@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy NordHub</title>
+    <!-- Add Prism CSS and Theme -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .download-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2.5rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .download-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(0, 123, 255, 0.5);
+            margin-bottom: 2rem;
+        }
+
+        .code-container {
+            position: relative;
+            margin: 1rem 0;
+            text-align: left;
+        }
+
+        pre[class*="language-"] {
+            background: rgba(0, 0, 0, 0.3) !important;
+            border-radius: 8px;
+            margin: 0 !important;
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .copy-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .copy-feedback {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: #007bff;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        .download-container {
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Custom Prism.js theme overrides */
+        .token.function {
+            color: #66b3ff !important;
+        }
+
+        .token.string {
+            color: #98c379 !important;
+        }
+
+        .token.punctuation {
+            color: #7f848e !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="download-container">
+        <h1>One Solution to a stolen game</h1>
+        <div class="code-container">
+            <button class="copy-button" onclick="copyCode()">Copy</button>
+            <div class="copy-feedback">Copied!</div>
+            <pre><code class="language-lua">loadstring(game:HttpGet("https://raw.githubusercontent.com/Dylanfoc2/Script-roblox/refs/heads/main/NordHub",true))()</code></pre>
+        </div>
+    </div>
+
+    <!-- Add Prism.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-lua.min.js"></script>
+    
+    <script>
+        function copyCode() {
+            const code = document.querySelector('code').innerText;
+            navigator.clipboard.writeText(code);
+            
+            // Show feedback
+            const copyButton = document.querySelector('.copy-button');
+            const copyFeedback = document.querySelector('.copy-feedback');
+            
+            copyButton.style.display = 'none';
+            copyFeedback.style.display = 'block';
+            
+            setTimeout(() => {
+                copyButton.style.display = 'block';
+                copyFeedback.style.display = 'none';
+            }, 1500);
+
+            // Container flash effect
+            const container = document.querySelector('.download-container');
+            container.style.backgroundColor = 'rgba(0, 123, 255, 0.1)';
+            setTimeout(() => {
+                container.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+            }, 200);
+        }
+    </script>
+</body>
+</html> 
